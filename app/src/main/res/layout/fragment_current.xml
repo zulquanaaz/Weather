@@ -1,14 +1,410 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".CurrentFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <androidx.appcompat.widget.Toolbar
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_height="?attr/actionBarSize"
+        android:id="@+id/toolbar1"
+        android:background="@color/colorPrimary"
+        app:title="Weather"
+        android:visibility="gone"
+        app:navigationIcon="?attr/homeAsUpIndicator"
+        app:layout_constraintTop_toTopOf="parent"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark"/>
 
-</FrameLayout>
+    <!--    app:layout_constraintTop_toTopOf="parent"-->
+    <ImageView
+        android:id="@+id/img_main"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar1" />
+
+    <TextView
+        android:id="@+id/txt_weatherState"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:textColor="@color/colorPrimaryDark"
+        android:textSize="20sp"
+        app:layout_constraintTop_toBottomOf="@+id/img_main"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="365dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/cardView"
+        app:layout_constraintTop_toBottomOf="@+id/txt_weatherState"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginTop="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:cardCornerRadius="18dp"
+        app:cardBackgroundColor="@color/white">
+
+        <LinearLayout
+            android:id="@+id/layout_1"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_constraintTop_toBottomOf="@+id/txt_weatherState"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginTop="10dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:orientation="horizontal"
+            android:baselineAligned="false">
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/txt_curTemp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/colorPrimary"
+                    android:text="25"
+                    android:textSize="40sp"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:gravity="center">
+                <TextView
+                    android:id="@+id/txt_curDay"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/black"
+                    android:text="18/05/2021"
+                    android:textSize="18sp" />
+                <TextView
+                    android:id="@+id/txt_location"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Montreal"
+                    android:textColor="@color/colorPrimaryDark"
+                    android:textSize="25sp"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:gravity="center">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Feels"
+                    android:labelFor="@+id/txt_maxTemp"
+                    android:textColor="@color/black" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/txt_feelsTemp"
+                    android:textSize="25sp"
+                    android:text="25"
+                    android:textColor="@color/colorPrimary"/>
+            </LinearLayout>
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/layout_mid1"
+        android:orientation="horizontal"
+        app:layout_constraintStart_toStartOf="parent"
+        android:background="@drawable/border"
+        app:layout_constraintTop_toBottomOf="@+id/cardView"
+        android:layout_marginTop="25dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:gravity="center">
+            <TextView
+                android:id="@+id/lbl_windDire"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Wind Direction"
+                android:labelFor="@+id/txt_windDire"
+                android:textColor="@color/black" />
+            <ImageView
+                android:id="@+id/img_windDire"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:src="@drawable/compass"/>
+            <TextView
+                android:id="@+id/txt_windDire"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/colorPrimaryDark" />
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:gravity="center">
+            <TextView
+                android:id="@+id/lbl_windSpeed"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Wind Speed"
+                android:labelFor="@+id/txt_windSpeed"
+                android:textColor="@color/black" />
+            <ImageView
+                android:id="@+id/img_windSpeed"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:src="@drawable/wind"/>
+            <TextView
+                android:id="@+id/txt_windSpeed"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/colorPrimaryDark" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:gravity="center">
+            <TextView
+                android:id="@+id/lbl_predict"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Predictability"
+                android:labelFor="@+id/txt_predict"
+                android:textColor="@color/black" />
+            <ImageView
+                android:id="@+id/img_predict"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:src="@drawable/humidity"/>
+            <TextView
+                android:id="@+id/txt_humid"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/colorPrimaryDark" />
+
+        </LinearLayout>
+    </LinearLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:id="@+id/divider1"
+        app:layout_constraintTop_toBottomOf="@+id/layout_mid1"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginTop="5dp"
+        android:background="@color/white"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/layout_mid2"
+        android:orientation="horizontal"
+        android:background="@drawable/border"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/divider1"
+        android:layout_marginTop="5dp">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:gravity="center">
+
+            <TextView
+                android:id="@+id/lbl_uv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="UV"
+                android:labelFor="@+id/txt_humid"
+                android:textColor="@color/black" />
+            <ImageView
+                android:id="@+id/img_uv"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:src="@drawable/uvrays"/>
+            <TextView
+                android:id="@+id/txt_uv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/colorPrimaryDark" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:gravity="center">
+            <TextView
+                android:id="@+id/lbl_visibility"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Visibility"
+                android:labelFor="@+id/txt_visibility"
+                android:textColor="@color/black" />
+            <ImageView
+                android:id="@+id/img_visibility"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:src="@drawable/eye"/>
+            <TextView
+                android:id="@+id/txt_visibility"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/colorPrimaryDark" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:gravity="center">
+            <TextView
+                android:id="@+id/lbl_pressure"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Air Pressure"
+                android:labelFor="@+id/txt_pressure"
+                android:textColor="@color/black" />
+            <ImageView
+                android:id="@+id/img_pressure"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:src="@drawable/pressure"/>
+            <TextView
+                android:id="@+id/txt_pressure"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/colorPrimaryDark" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/dayDetail"
+        app:layout_constraintTop_toBottomOf="@+id/layout_mid2"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginTop="10dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:cardCornerRadius="18dp"
+        >
+
+        <LinearLayout
+            android:id="@+id/layout_bottom"
+            android:layout_width="match_parent"
+            android:layout_height="120dp"
+            android:baselineAligned="false">
+
+
+            <LinearLayout
+                android:id="@+id/layout_forecast"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:background="@drawable/border"
+                android:layout_margin="10dp"
+                android:orientation="vertical">
+
+
+                <ImageView
+                    android:id="@+id/img_day3"
+                    android:layout_width="65dp"
+                    android:src="@drawable/hours"
+                    android:layout_height="65dp" />
+
+                <TextView
+                    android:id="@+id/txt_day3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Hourly"
+                    android:textColor="@color/black" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/layout_astronomy"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:background="@drawable/border"
+                android:layout_margin="10dp"
+                android:orientation="vertical">
+
+
+                <ImageView
+                    android:id="@+id/img_day4"
+                    android:layout_width="65dp"
+                    android:src="@drawable/day"
+                    android:layout_height="65dp" />
+
+                <TextView
+                    android:id="@+id/txt_day4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Astronomy"
+                    android:textColor="@color/black"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/layout_dayForecast"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:layout_margin="10dp"
+                android:background="@drawable/border"
+                android:orientation="vertical">
+
+
+                <ImageView
+                    android:id="@+id/img_day5"
+                    android:layout_width="65dp"
+                    android:src="@drawable/calendar"
+                    android:layout_height="65dp" />
+
+                <TextView
+                    android:id="@+id/txt_day5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="3 Days"
+                    android:textColor="@color/black"/>
+            </LinearLayout>
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

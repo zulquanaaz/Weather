@@ -2,6 +2,14 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item android:id="@+id/c_montreal"
         android:title="Montreal"/>
+    <item android:id="@+id/c_london"
+        android:title="London"/>
+    <item android:id="@+id/c_toronto"
+        android:title="Toronto"/>
+    <item android:id="@+id/c_mumbai"
+        android:title="Mumbai"/>
+    <item android:id="@+id/c_vancouver"
+        android:title="Vancouver"/>
     <group android:checkableBehavior="single">
         <item android:title="Profile">
             <menu>

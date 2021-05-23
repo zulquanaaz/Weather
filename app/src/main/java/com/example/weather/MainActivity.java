@@ -66,6 +66,27 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 Intent intent=new Intent(getApplicationContext(),StartActivity.class);
                 startActivity(intent);
                 break;
+            case R.id.c_london:
+                b.putInt("Country",R.id.c_london);
+                navController= Navigation.findNavController(this,R.id.nav_host_fragment);
+                navController.navigate(R.id.currentFragment,b);
+                break;
+
+            case R.id.c_vancouver:
+                b.putInt("Country",R.id.c_vancouver);
+                navController= Navigation.findNavController(this,R.id.nav_host_fragment);
+                navController.navigate(R.id.currentFragment,b);
+                break;
+            case R.id.c_mumbai:r:
+            b.putInt("Country",R.id.c_mumbai);
+                navController= Navigation.findNavController(this,R.id.nav_host_fragment);
+                navController.navigate(R.id.currentFragment,b);
+                break;
+            case R.id.c_toronto:r:
+            b.putInt("Country",R.id.c_toronto);
+                navController= Navigation.findNavController(this,R.id.nav_host_fragment);
+                navController.navigate(R.id.currentFragment,b);
+                break;
         }
         return true;
     }

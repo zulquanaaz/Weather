@@ -89,6 +89,18 @@ public class CurrentFragment extends Fragment implements View.OnClickListener{
                 case R.id.c_montreal: call = service.getMontrealWeather();
                     getApiData(call);
                     break;
+                case R.id.c_london:  call = service.getLondonWeather();
+                    getApiData(call);
+                    break;
+                case R.id.c_toronto:  call = service.getTorontoWeather();
+                    getApiData(call);
+                    break;
+                case R.id.c_vancouver:  call = service.getVancouverWeather();
+                    getApiData(call);
+                    break;
+                case R.id.c_mumbai:  call = service.getMumbaiWeather();
+                    getApiData(call);
+                    break;
 
             }
         }else{

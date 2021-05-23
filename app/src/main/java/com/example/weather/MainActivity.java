@@ -50,17 +50,18 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         menuItem.setCheckable(true);
         drawerLayout.closeDrawers();
         int id=menuItem.getItemId();
+        Bundle b=new Bundle();
         switch (id){
             case R.id.c_montreal:
-
+                b.putInt("Country",R.id.c_montreal);
                 navController= Navigation.findNavController(this,R.id.nav_host_fragment);
-
-                navController.navigate(R.id.currentFragment);
+                navController.navigate(R.id.currentFragment,b);
                 break;
-
         }
         return true;
     }
+
+
     @Override
     public void onBackPressed() {
         if(drawerLayout.isDrawerOpen(GravityCompat.START)){

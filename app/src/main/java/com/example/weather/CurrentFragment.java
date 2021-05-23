@@ -35,7 +35,7 @@ public class CurrentFragment extends Fragment implements View.OnClickListener{
     private boolean connected;
     int a=R.id.c_montreal;
     Example weatherData;
-    LinearLayout layout_forecastHour;
+    LinearLayout layout_forecastHour,layout_astronomy;
     public CurrentFragment() {
         // Required empty public constructor
     }
@@ -74,9 +74,11 @@ public class CurrentFragment extends Fragment implements View.OnClickListener{
         txt_visibility=view.findViewById(R.id.txt_visibility);
         txt_pressure=view.findViewById(R.id.txt_pressure);
         layout_forecastHour=view.findViewById(R.id.layout_forecast);
-
+        layout_astronomy=view.findViewById(R.id.layout_astronomy);
         chooseRetroCall(a);
+        layout_astronomy.setOnClickListener(this::onClick);
         layout_forecastHour.setOnClickListener(this::onClick);
+
     }
 
     private void chooseRetroCall(int a) {
@@ -171,6 +173,9 @@ public class CurrentFragment extends Fragment implements View.OnClickListener{
         switch (v.getId()){
             case R.id.layout_forecast:
                 navController.navigate(R.id.hoursFragment,b);
+                break;
+            case R.id.layout_astronomy:
+                navController.navigate(R.id.astronomyFragment,b);
                 break;
 
         }

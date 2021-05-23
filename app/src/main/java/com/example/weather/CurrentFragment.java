@@ -1,23 +1,20 @@
 package com.example.weather;
 
+
 import android.content.Context;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
-
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
-import androidx.navigation.NavController;
-import androidx.navigation.Navigation;
-
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+
+import androidx.fragment.app.Fragment;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
 
 import com.example.weather.model.Example;
 import com.google.android.material.snackbar.Snackbar;
@@ -56,25 +53,26 @@ public class CurrentFragment extends Fragment implements View.OnClickListener{
     }
 
     @Override
-    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+    public void onViewCreated(View view,Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-
+        img_main = (ImageView) view.findViewById(R.id.img_main);
+        txt_weatherState=(TextView) view.findViewById(R.id.txt_weatherState);
+        txt_curTemp=(TextView) view.findViewById(R.id.txt_curTemp);
+        txt_feelTemp=(TextView) view.findViewById(R.id.txt_feelsTemp);
+        txt_location=(TextView) view.findViewById(R.id.txt_location);
+        txt_curDay=(TextView) view.findViewById(R.id.txt_curDay);
+        txt_windDire=(TextView) view.findViewById(R.id.txt_windDire);
+        txt_windSpeed=(TextView) view.findViewById(R.id.txt_windSpeed);
+        txt_uv=(TextView) view.findViewById(R.id.txt_uv);
+        txt_humid=(TextView) view.findViewById(R.id.txt_humid);
+        txt_visibility=(TextView) view.findViewById(R.id.txt_visibility);
+        txt_pressure=(TextView) view.findViewById(R.id.txt_pressure);
+        layout_forecastHour=view.findViewById(R.id.layout_forecast);
+        layout_astronomy=view.findViewById(R.id.layout_astronomy);
         if(getArguments()!=null){
             a=getArguments().getInt("Country");
         }
-        img_main = view.findViewById(R.id.img_main);
-        txt_weatherState=view.findViewById(R.id.txt_weatherState);
-        txt_curTemp=view.findViewById(R.id.txt_curTemp);
-        txt_feelTemp=view.findViewById(R.id.txt_feelsTemp);
-        txt_curDay=view.findViewById(R.id.txt_curDay);
-        txt_windDire=view.findViewById(R.id.txt_windDire);
-        txt_windSpeed=view.findViewById(R.id.txt_windSpeed);
-        txt_uv=view.findViewById(R.id.txt_uv);
-        txt_humid=view.findViewById(R.id.txt_humid);
-        txt_visibility=view.findViewById(R.id.txt_visibility);
-        txt_pressure=view.findViewById(R.id.txt_pressure);
-        layout_forecastHour=view.findViewById(R.id.layout_forecast);
-        layout_astronomy=view.findViewById(R.id.layout_astronomy);
+
         chooseRetroCall(a);
         layout_astronomy.setOnClickListener(this::onClick);
         layout_forecastHour.setOnClickListener(this::onClick);

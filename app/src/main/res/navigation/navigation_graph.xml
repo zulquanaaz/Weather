@@ -10,4 +10,9 @@
         android:name="com.example.weather.CurrentFragment"
         android:label="fragment_current"
         tools:layout="@layout/fragment_current" />
+    <fragment
+        android:id="@+id/hoursFragment"
+        android:name="com.example.weather.HoursFragment"
+        android:label="fragment_hours"
+        tools:layout="@layout/fragment_hours" />
 </navigation>

@@ -8,11 +8,15 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.example.weather.model.Example;
@@ -23,7 +27,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class CurrentFragment extends Fragment {
+public class CurrentFragment extends Fragment implements View.OnClickListener{
 
     TextView txt_weatherState,txt_curTemp,txt_feelTemp,txt_location,txt_curDay,txt_windDire,txt_windSpeed,txt_uv,txt_humid,txt_visibility,txt_pressure;
 
@@ -31,7 +35,7 @@ public class CurrentFragment extends Fragment {
     private boolean connected;
     int a=R.id.c_montreal;
     Example weatherData;
-
+    LinearLayout layout_forecastHour;
     public CurrentFragment() {
         // Required empty public constructor
     }
@@ -69,22 +73,10 @@ public class CurrentFragment extends Fragment {
         txt_humid=view.findViewById(R.id.txt_humid);
         txt_visibility=view.findViewById(R.id.txt_visibility);
         txt_pressure=view.findViewById(R.id.txt_pressure);
+        layout_forecastHour=view.findViewById(R.id.layout_forecast);
 
         chooseRetroCall(a);
-
-        img_main = view.findViewById(R.id.img_main);
-        txt_weatherState=view.findViewById(R.id.txt_weatherState);
-        txt_location=view.findViewById(R.id.txt_location);
-        txt_curTemp=view.findViewById(R.id.txt_curTemp);
-        txt_feelTemp=view.findViewById(R.id.txt_feelsTemp);
-        txt_curDay=view.findViewById(R.id.txt_curDay);
-        txt_windDire=view.findViewById(R.id.txt_windDire);
-        txt_windSpeed=view.findViewById(R.id.txt_windSpeed);
-        txt_uv=view.findViewById(R.id.txt_uv);
-        txt_humid=view.findViewById(R.id.txt_humid);
-        txt_visibility=view.findViewById(R.id.txt_visibility);
-        txt_pressure=view.findViewById(R.id.txt_pressure);
-
+        layout_forecastHour.setOnClickListener(this::onClick);
     }
 
     private void chooseRetroCall(int a) {
@@ -168,5 +160,20 @@ public class CurrentFragment extends Fragment {
                 }
             }
         }).show();
+    }
+
+    @Override
+    public void onClick(View v) {
+        NavController navController = Navigation.findNavController(getActivity(),R.id.nav_host_fragment);
+        Bundle b=new Bundle();
+        b.putParcelable("Weather",weatherData);
+
+        switch (v.getId()){
+            case R.id.layout_forecast:
+                navController.navigate(R.id.hoursFragment,b);
+                break;
+
+        }
+
     }
 }

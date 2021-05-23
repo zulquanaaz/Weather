@@ -20,4 +20,9 @@
         android:name="com.example.weather.AstronomyFragment"
         android:label="fragment_astronomy"
         tools:layout="@layout/fragment_astronomy" />
+    <fragment
+        android:id="@+id/daysFragment"
+        android:name="com.example.weather.DaysFragment"
+        android:label="fragment_days"
+        tools:layout="@layout/fragment_days" />
 </navigation>

@@ -2,4 +2,17 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item android:id="@+id/c_montreal"
         android:title="Montreal"/>
+    <group android:checkableBehavior="single">
+        <item android:title="Profile">
+            <menu>
+                <item
+                    android:id="@+id/nav_logout"
+                    android:title="Log Out"
+                    android:icon="@drawable/ic_baseline_exit_to_app_24"
+                    />
+
+            </menu>
+        </item>
+
+    </group>
 </menu>

@@ -9,11 +9,13 @@ import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.NavigationUI;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import android.view.MenuItem;
 
 import com.google.android.material.navigation.NavigationView;
+import com.google.firebase.auth.FirebaseAuth;
 
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
@@ -22,10 +24,12 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     public DrawerLayout drawerLayout;
     public NavController navController;
     public NavigationView navigationView;
+    FirebaseAuth auth;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        auth=FirebaseAuth.getInstance();
         setupNavigation();
     }
 
@@ -56,6 +60,11 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 b.putInt("Country",R.id.c_montreal);
                 navController= Navigation.findNavController(this,R.id.nav_host_fragment);
                 navController.navigate(R.id.currentFragment,b);
+                break;
+            case R.id.nav_logout:
+               auth.signOut();
+                Intent intent=new Intent(getApplicationContext(),StartActivity.class);
+                startActivity(intent);
                 break;
         }
         return true;
